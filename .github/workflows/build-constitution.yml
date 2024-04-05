@@ -7,8 +7,6 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v2
-      - name: Install xelatex
-        run: sudo apt install -y texlive-xetex
       - name: Create pdf folder
         run: mkdir -p pdf
       - uses: docker://pandoc/latex:latest
@@ -21,6 +19,7 @@ jobs:
             -V 'mainfontoptions:BoldItalicFont=JetBrainsMono-BoldItalic.ttf'
             -V 'mainfontoptions:Path=fonts/ttf/'
             -o pdf/constitution.pdf
+            --pdf-engine=xelatex
       - name: Commit files
         run: |
           git add -f pdf/*
