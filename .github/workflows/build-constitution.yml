@@ -1,0 +1,15 @@
+name: Build Constitution
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps: 
+      - working-directory: ./
+      - uses: docker://pandoc/core:2.9
+        with: 
+          args: >- 
+            ../constitution.md
+            -V 'mainfont:fonts/ttf/JetBrainsMono-Regular.ttf'
+            -V 'mainfontoptions:BoldFont=fonts/ttf/JetBrainsMono-Bold.ttf, ItalicFont=fonts/ttf/JetBrainsMono-Italic.ttf, BoldItalicFont=ItalicFont=fonts/ttf/JetBrainsMono-BoldItalic.ttf'
+            -o constitution.pdf
+
