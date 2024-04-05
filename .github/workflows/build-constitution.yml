@@ -11,7 +11,7 @@ jobs:
         run: sudo apt install -y texlive-xetex
       - name: Create pdf folder
         run: mkdir -p pdf
-      - uses: docker://pandoc/core:2.9
+      - uses: docker://pandoc/latex:latest
         with: 
           args: >- 
             constitution.md
@@ -20,7 +20,6 @@ jobs:
             -V 'mainfontoptions:ItalicFont=JetBrainsMono-Italic.ttf'
             -V 'mainfontoptions:BoldItalicFont=JetBrainsMono-BoldItalic.ttf'
             -V 'mainfontoptions:Path=fonts/ttf/'
-            --pdf-engine=xelatex
             -o pdf/constitution.pdf
       - name: Commit files
         run: |
