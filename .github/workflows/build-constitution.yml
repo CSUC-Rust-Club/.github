@@ -12,6 +12,8 @@ jobs:
       - name: Install latex
         run: |
           sudo apt-get install -y texlive-full
+      - name: Create PDF directory
+        run: mkdir -p pdf
       - name: Build PDF
         run: |
           pandoc constitution.md -o pdf/constitution.pdf --pdf-engine=xelatex \
@@ -20,3 +22,7 @@ jobs:
                 -V mainfontoptions:ItalicFont="JetBrainsMono-Italic.ttf" \
                 -V mainfontoptions:BoldItalicFont="JetBrainsMono-BoldItalic.ttf" \
                 -V mainfontoptions:Path="fonts/ttf/"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: constitution-pdf
+          path: pdf/constitution.pdf
