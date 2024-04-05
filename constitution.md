@@ -1,10 +1,10 @@
 ---
 title: The Rust Club Constitution
-# mainfont: JetBrains Mono
+# mainfont: ./fonts/ttf/JetBrainsMono-Regular.ttf
 # mainfontoptions:
-# - BoldFont=* Bold
-# - ItalicFont=* Italic
-# - BoldItalicFont=* Bold Italic
+# - BoldFont=./fonts/ttf/JetBrainsMono-Bold.ttf
+# - ItalicFont=./fonts/ttf/JetBrainsMono-Italic.ttf
+# - BoldItalicFont=./fonts/ttf/JetBrainsMono-BoldItalic.ttf
 ---
 
 # Article I:       **Name**
