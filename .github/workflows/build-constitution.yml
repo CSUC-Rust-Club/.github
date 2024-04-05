@@ -9,7 +9,7 @@ jobs:
         run: |
           docker run --rm \
             -v "${{ github.workspace }}:/workspace" \
-            pandoc/core:2.9 pandoc \
+            pandoc/core:latest pandoc \
             /workspace/constitution.md \
             -V mainfont="/workspace/fonts/ttf/JetBrainsMono-Regular.ttf" \
             -V mainfontoptions:BoldFont="/workspace/fonts/ttf/JetBrainsMono-Bold.ttf" \
