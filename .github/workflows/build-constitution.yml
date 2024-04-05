@@ -12,7 +12,6 @@ jobs:
       - name: Install latex
         run: |
           sudo apt-get install -y texlive-full
-          sudo apt-get install -y xelatex
       - name: Build PDF
         run: |
           pandoc constitution.md -o pdf/constitution.pdf --pdf-engine=xelatex \
