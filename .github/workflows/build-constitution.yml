@@ -9,12 +9,13 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y pandoc
-      - name: Install tectonic
+      - name: Install latex
         run: |
-          curl --proto '=https' --tlsv1.2 -fsSL https://drop-sh.fullyjustified.net |sh
+          sudo apt-get install -y texlive-full
+          sudo apt-get install -y xelatex
       - name: Build PDF
         run: |
-          pandoc constitution.md -o pdf/constitution.pdf --pdf-engine=tectonic \
+          pandoc constitution.md -o pdf/constitution.pdf --pdf-engine=xelatex \
                 -V mainfont="JetBrainsMono-Regular.ttf" \
                 -V mainfontoptions:BoldFont="JetBrainsMono-Bold.ttf" \
                 -V mainfontoptions:ItalicFont="JetBrainsMono-Italic.ttf" \
