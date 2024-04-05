@@ -11,7 +11,7 @@ jobs:
           sudo apt-get install -y pandoc
       - name: Install tectonic
         run: |
-          sudo apt-get install -y tectonic
+          curl --proto '=https' --tlsv1.2 -fsSL https://drop-sh.fullyjustified.net |sh
       - name: Build PDF
         run: |
           pandoc constitution.md -o pdf/constitution.pdf --pdf-engine=tectonic \
