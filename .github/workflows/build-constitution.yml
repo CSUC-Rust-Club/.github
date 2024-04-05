@@ -9,10 +9,10 @@ jobs:
         run: |
           docker run --rm \
             -v "${{ github.workspace }}:/workspace" \
-            pandoc/core:2.9 \
+            pandoc/core:2.9 pandoc \
             /workspace/constitution.md \
-            -V "mainfont:/workspace/fonts/ttf/JetBrainsMono-Regular.ttf" \
-            -V "mainfontoptions:BoldFont=/workspace/fonts/ttf/JetBrainsMono-Bold.ttf, ItalicFont=/workspace/fonts/ttf/JetBrainsMono-Italic.ttf, BoldItalicFont=ItalicFont=/workspace/fonts/ttf/JetBrainsMono-BoldItalic.ttf" \
+            -V mainfont="/workspace/fonts/ttf/JetBrainsMono-Regular.ttf" \
+            -V mainfontoptions:BoldFont="/workspace/fonts/ttf/JetBrainsMono-Bold.ttf" \
+            -V mainfontoptions:ItalicFont="/workspace/fonts/ttf/JetBrainsMono-Italic.ttf" \
+            -V mainfontoptions:BoldItalicFont="/workspace/fonts/ttf/JetBrainsMono-BoldItalic.ttf" \
             -o /workspace/constitution.pdf
-        working-directory: ./
-
