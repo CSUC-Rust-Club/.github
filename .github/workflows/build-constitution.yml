@@ -3,14 +3,16 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-22.04
-    steps: 
-      - name: build-pdf
-        uses: docker://pandoc/core:2.9
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build PDF
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/workspace" \
+            pandoc/core:2.9 \
+            /workspace/constitution.md \
+            -V "mainfont:/workspace/fonts/ttf/JetBrainsMono-Regular.ttf" \
+            -V "mainfontoptions:BoldFont=/workspace/fonts/ttf/JetBrainsMono-Bold.ttf, ItalicFont=/workspace/fonts/ttf/JetBrainsMono-Italic.ttf, BoldItalicFont=ItalicFont=/workspace/fonts/ttf/JetBrainsMono-BoldItalic.ttf" \
+            -o /workspace/constitution.pdf
         working-directory: ./
-        with: 
-          args: >- 
-            ../constitution.md
-            -V 'mainfont:fonts/ttf/JetBrainsMono-Regular.ttf'
-            -V 'mainfontoptions:BoldFont=fonts/ttf/JetBrainsMono-Bold.ttf, ItalicFont=fonts/ttf/JetBrainsMono-Italic.ttf, BoldItalicFont=ItalicFont=fonts/ttf/JetBrainsMono-BoldItalic.ttf'
-            -o constitution.pdf
 
