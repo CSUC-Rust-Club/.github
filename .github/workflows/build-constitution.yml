@@ -3,26 +3,30 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-22.04
+    permissions:                # Job-level permissions configuration starts here
+      contents: write
     steps:
       - uses: actions/checkout@v2
-      - name: Install Pandoc
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y pandoc
-      - name: Install latex
-        run: |
-          sudo apt-get install -y texlive-full
-      - name: Create PDF directory
+      - name: Create pdf folder
         run: mkdir -p pdf
-      - name: Build PDF
+      - uses: docker://pandoc/core:2.9
+        with: 
+          args: >- 
+            constitution.md
+            -V 'JetBrainsMono-Regular.ttf'
+            -V 'mainfontoptions:BoldFont=JetBrainsMono-Bold.ttf'
+            -V 'mainfontoptions:ItalicFont=JetBrainsMono-Italic.ttf'
+            -V 'mainfontoptions:BoldItalicFont=JetBrainsMono-BoldItalic.ttf'
+            -V 'mainfontoptions:Path=fonts/ttf/'
+            -o pdf/constitution.pdf
+      - name: Commit files
         run: |
-          pandoc constitution.md -o pdf/constitution.pdf --pdf-engine=xelatex \
-                -V mainfont="JetBrainsMono-Regular.ttf" \
-                -V mainfontoptions:BoldFont="JetBrainsMono-Bold.ttf" \
-                -V mainfontoptions:ItalicFont="JetBrainsMono-Italic.ttf" \
-                -V mainfontoptions:BoldItalicFont="JetBrainsMono-BoldItalic.ttf" \
-                -V mainfontoptions:Path="fonts/ttf/"
-      - uses: actions/upload-artifact@v4
+          git add pdf/*
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -a -m "Add changes"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
         with:
-          name: constitution-pdf
-          path: pdf/constitution.pdf
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
