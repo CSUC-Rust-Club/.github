@@ -4,8 +4,9 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     steps: 
-      - working-directory: ./
-      - uses: docker://pandoc/core:2.9
+      - name: build-pdf
+        uses: docker://pandoc/core:2.9
+        working-directory: ./
         with: 
           args: >- 
             ../constitution.md
