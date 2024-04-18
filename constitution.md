@@ -43,6 +43,12 @@ The Club's advisor shall be selected by a majority vote of the membership from a
 
 Amendments to this constitution may be proposed by any member and must be submitted in writing or a GitHub pull request. An amendment shall be adopted by a two-thirds majority vote of the members present, provided that a quorum (50% of the voting membership) is met. Notice of proposed amendments must be given at least one week prior to the vote.
 
+# Article VIII     Non-Discrimination Statement
+
+The Rust Club is committed to providing an inclusive and welcoming environment for all members, regardless of race, color, religion (creed), gender, gender expression, age, national origin (ancestry), disability, marital status, sexual orientation, or military status. The Club will adhere to all applicable federal and state laws, university policies, and Chancellor's Executive Orders regarding non-discrimination.
+
+The Club does not discriminate in its membership selection, appointment of officers, or its operational processes. The Club is dedicated to ensuring equitable access to all club activities and resources. Complaints of discrimination may be brought to the attention of the Club officers, who are responsible for investigating and addressing such complaints in accordance with university procedures.
+
 # Article IX:      Disbursal of Assets
 
 Should the Club cease to exist, its assets shall be disbursed to a non-profit organization chosen by a majority vote of the remaining members. This process will ensure that any remaining funds are used in a manner consistent with the Club's educational and charitable purposes.
